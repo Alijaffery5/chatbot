@@ -1,10 +1,10 @@
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
 # Load the pre-trained Flan-T5 base model for sequence-to-sequence tasks
-model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-base")
+model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-base") # Update URL to 'google/flan-t5-xxl' for 1 billion version
 
 # Load the tokenizer for Flan-T5, which converts text to token IDs and vice versa.
-tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-base")
+tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-base") # Update URL to 'google/flan-t5-xxl'
 
 def generate_response(user_input):
     # Encode the user input into token IDs, producing a PyTorch tensor with input data.
