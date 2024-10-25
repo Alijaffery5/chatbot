@@ -1,17 +1,18 @@
 # Chatbot API
 
-This project is a Django-based REST API for a chatbot application that allows users to start chat sessions, send messages, edit existing messages, and end chat sessions. The chat history is stored with timestamps and user information.
+This project is a Django-based REST API for a chatbot application that allows users to have an interactive session with the chatbot using prompt messages. The chat history is stored with timestamps and user information.
 
 ## Features
 
 - Implementation of the Flan-T5 Model: The base version of the Flan-T5 model is used to optimize for performance and avoid heavy computation. To switch to a more powerful variant, such as the 'xxl' version, update the configuration in chatbot\chatbot\utils.py.
 - User Authentication  (Django Token Authentication).
 - SQLite database used.
-- Start a new chat session.
-- Add user messages / prompts and receive chatbot responses.
-- Continue an existing chat session.
-- Edit specific messages in chat history.
-- End the current chat session.
+- Start a new chat session by sending a message.
+- Receive response from the bot.
+- Continue conversation while persisting the chat session.
+- Chat history is preserves.
+- Continue or end an existing chat session.
+- Edit specific messages in chat history using chat id and message id.
 - Delete specific chat room based on id.
 - Timestamps are stored in PST time zone and formatted as `DD/MM/YYYY HH:MM:SS`.
 
