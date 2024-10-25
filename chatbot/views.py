@@ -44,6 +44,7 @@ def format_time(dt):
 
 @api_view(['POST'])
 def login(request):
+    """Authenticate a user and provide a token."""
     user = get_object_or_404(User, username=request.data['username'])
     if not user.check_password(request.data['password']):
         return Response({"detail": "Not found", }, status=status.HTTP_400_BAD_REQUEST)
@@ -55,6 +56,7 @@ def login(request):
 
 @api_view(['POST'])
 def signup(request):
+    """Register a new user with the system."""
     serializer = UserSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
@@ -74,6 +76,8 @@ def test_token(request):
 @api_view(['GET', 'POST'])  # Allow both GET and POST methods
 @authenticated_view
 def chat_operations(request):
+    """[POST] Start a new chat session and store the initial message.
+       [GET] Retrieve all the chat histories or get specific using session_id as a query param."""
     if request.method == 'POST':
         # Retrieve content and end_session from the request
         content = request.data.get('content')
@@ -177,6 +181,8 @@ def chat_operations(request):
 @api_view(['PATCH'])
 @authenticated_view
 def update_message(request, chat_id, message_id):
+    """Edit the content of a specific message in a chat and passed with chat_id and message_id as a query params
+       Endpoint expects a JSON body with 'content' to update the message."""
     try:
         # Extract the message ID and new content from the request
         new_content = request.data.get('content')  # The new content for the message
@@ -206,6 +212,7 @@ def update_message(request, chat_id, message_id):
 @api_view(['DELETE'])
 @authenticated_view
 def delete_chat(request, chat_id):
+    """Deletes a specific chat history based on chat_id passed as query param"""
     try:
         # Try to get the chat instance for the authenticated user
         chat = Chat.objects.get(id=chat_id, user=request.user)
