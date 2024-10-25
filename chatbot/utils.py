@@ -17,6 +17,7 @@ def generate_response(user_input):
         num_beams=5,  # Use beam search with 5 beams to enhance the quality of the output.
         no_repeat_ngram_size=2,  # Prevent repeating any 2-word sequences in the generated response.
         top_k=50,  # Use top-k sampling, considering the top 50 options at each step.
+        do_sample=True,
         top_p=0.9,  # Apply top-p (nucleus) sampling to include tokens from the top 90% probability mass.
         early_stopping=True  # Stop generating tokens once an end-of-sequence token is predicted.
     )
