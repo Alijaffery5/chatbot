@@ -26,7 +26,7 @@ This project is a Django-based REST API for a chatbot application that allows us
 1. **Clone the repository**
 
     ```bash
-    git clone https://github.com/Alijaffery5/chatbot-api.git
+    git clone https://github.com/Alijaffery5/chatbot.git
     cd chatbot-api
     ```
 
